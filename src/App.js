@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Button, Stack } from "./components";
 import { Page_colors } from "./styles/page_colors";
 import { Device } from "./device";
-import FridgeClose from "./assets/imageDone/fridge01-close.png";
-import FridgeOpen from "./assets/imageDone/fridge01-open.png";
+import FridgeClose from "./assets/imageDone/fridge02-close.png";
+import FridgeOpen from "./assets/imageDone/fridge02-open.png";
 
 const App = () => {
   const [screenSize, setScreenSize] = useState(getCurrentDimension());
@@ -48,9 +48,9 @@ const App = () => {
         onClick={() => Clicked()}
       >
         {click === false ? (
-          <img src={FridgeClose} alt="logo" style={{ width: "100%" }} />
+          <img src={FridgeClose} alt="logo" style={{ height: screenSize.height - 100}} />
         ) : (
-          <img src={FridgeOpen} alt="logo" style={{ width: "100%" }} />
+          <img src={FridgeOpen} alt="logo" style={{width: screenSize.width }} />
         )}
       </Button>
     </Stack>
