@@ -47,7 +47,7 @@ const App = () => {
         border={Page_colors.main_color}
         onClick={() => Clicked()}
       >
-        {click === true ? (
+        {click === false ? (
           <img src={FridgeClose} alt="logo" style={{ width: "100%" }} />
         ) : (
           <img src={FridgeOpen} alt="logo" style={{ width: "100%" }} />
