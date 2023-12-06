@@ -1,25 +1,60 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import { Button, Stack } from "./components";
+import { Page_colors } from "./styles/page_colors";
+import { Device } from "./device";
+import FridgeClose from "./assets/imageDone/fridge01-close.png";
+import FridgeOpen from "./assets/imageDone/fridge01-open.png";
 
-function App() {
+const App = () => {
+  const [screenSize, setScreenSize] = useState(getCurrentDimension());
+  const [click, setClick] = useState(false);
+
+  function getCurrentDimension() {
+    return {
+      width: window.innerWidth,
+      height: window.innerHeight,
+    };
+  }
+
+  useEffect(() => {
+    const updateDimension = () => {
+      setScreenSize(getCurrentDimension());
+    };
+    window.addEventListener("resize", updateDimension);
+
+    return () => {
+      window.removeEventListener("resize", updateDimension);
+    };
+  }, [screenSize]);
+
+  const Clicked = () => {
+    setClick(!click);
+  };
+
+  console.log(screenSize, click);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Stack
+      width="100vw"
+      height="100vh"
+      bg={Page_colors.main_color}
+      direction="column"
+      justifyContent="center"
+      alignItems="center"
+    >
+      <Button
+        width={screenSize.width}
+        bg={Page_colors.main_color}
+        border={Page_colors.main_color}
+        onClick={() => Clicked()}
+      >
+        {click === true ? (
+          <img src={FridgeClose} alt="logo" style={{ width: "100%" }} />
+        ) : (
+          <img src={FridgeOpen} alt="logo" style={{ width: "100%" }} />
+        )}
+      </Button>
+    </Stack>
   );
-}
+};
 
 export default App;
