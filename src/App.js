@@ -6,7 +6,8 @@ import Fridge03 from "./pages/fridge03";
 
 
 const App = () => {
-
+  //true is i dont like errors 
+  //bullshit
   return (
     <Router>
       <Routes>
